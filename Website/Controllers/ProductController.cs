@@ -33,7 +33,7 @@ namespace Website.Controllers
 
             var list = (from product in db.Products
                         where (product.Category == Category)&&(!Rec.Contains(product.Id))&& (!Rec1.Contains(product.Id))
-                        select product).ToList();
+                        select product).FirstOrDefault();
             if (list == null)
             {
                 return HttpNotFound();
