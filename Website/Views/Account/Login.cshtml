@@ -1,0 +1,42 @@
+﻿@using Website.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+
+<div class="text-block-2">Welcome !!! </div>
+<div id="sign_up_box">
+    <div class="form-block w-form">
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @id = "wf-form-Email-Form", @name = "wf-form-Email-Form", @class = "form", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                @Html.LabelFor(m => m.Email, new { @class = "field-label-2" })
+                @Html.TextBoxFor(m => m.Email, new { @class = "text-field-2 w-input" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+
+                @Html.LabelFor(m => m.Password, new { @class = "field-label-3" })
+                @Html.PasswordFor(m => m.Password, new { @class = "text-field-3 w-input" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+
+                @Html.CheckBoxFor(m => m.RememberMe)
+                @Html.LabelFor(m => m.RememberMe)
+
+                <input type="submit" value="Sign In" class="submit-button w-button" />
+            }
+        </section>
+         
+    </div>
+</div>
+<div class="div-block-2 w-clearfix">
+    <div class="text-block-3">Need an account?</div>
+    @Html.ActionLink("Sign Up Now!", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "link" })
+
+</div>
+ 
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

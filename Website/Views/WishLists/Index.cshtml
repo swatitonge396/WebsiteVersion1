@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Favourites";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model.Count == 0)
+{<p> No Favourites!!!</p>}
+
+<table class="table table-responsive">
+
+    <tbody>
+        @foreach (var item in Model)
+            {
+                using (Html.BeginForm("Delete", "WishLists", new { id = item.Id }))
+                {
+            <tr>
+                
+                
+
+                <td>
+                    <div>
+                        <img src="@item.LargeImage" class="img-thumbnail" alt="Product" style="width:25%;height:25%">
+                    </div>
+                </td>
+                 
+                <td><div class="text-center col-4"><b>@item.Title</b><br /><p>@item.OtherInfo</p><br /><p>@item.Brand</p></div></td>
+                
+                <td><div class="col-2 align-items-center  "><a href="@item.DetailPageURL" target="_blank" class="shop_favorite w-button">Shop</a></div></td>
+                <td>
+                    <div class="col-2 align-items-center">
+
+
+                        <input type="submit" value="Delete" class="shop_favorite w-button" onclick="return confirm('Do you want to delete this record?');" />
+
+                    </div>
+                </td>
+
+            </tr>
+            }
+        }
+    </tbody>
+
+</table>
+  <!--
+ @*    
+@foreach (var item in Model)
+{
+    using (Html.BeginForm("Delete", "WishLists", new { id = item.Id }))
+    {
+                    <div class="div-block"></div>
+                    <div class="favorite-item">
+                        <input type="submit"  class="remove_favorite w-button" value="Remove" onclick="return confirm('Do you want to delete this record?');" />
+                        <img src="@item.LargeImage" width="100" class="favorite_item_image">
+                    <div class="favorite_product_name"><b>@item.Title</b>@item.OtherInfo</div><a href="@item.DetailPageURL" target="_blank" class="shop_favorite w-button">SHOP</a>
+                    </div>
+    }
+}  *@
+-->
+@section   Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+}

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Website", "Website\Website.csproj", "{E6703608-FAAF-4AE6-BD4A-EA11DE7CFCA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "URLGenerationService", "URLGenerationService\URLGenerationService.csproj", "{6684B633-3696-411C-9764-141191CCBA17}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E6703608-FAAF-4AE6-BD4A-EA11DE7CFCA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6703608-FAAF-4AE6-BD4A-EA11DE7CFCA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6703608-FAAF-4AE6-BD4A-EA11DE7CFCA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6703608-FAAF-4AE6-BD4A-EA11DE7CFCA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6684B633-3696-411C-9764-141191CCBA17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6684B633-3696-411C-9764-141191CCBA17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6684B633-3696-411C-9764-141191CCBA17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6684B633-3696-411C-9764-141191CCBA17}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CEEA509B-645F-4320-8244-834DCB5359C7}
+	EndGlobalSection
+EndGlobal
