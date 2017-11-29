@@ -10,7 +10,7 @@
 <div class="container container-table">
     <div class="row vertical-center-row">
      <h2> Choose Category</h2>
-        @using (Html.BeginForm("Index", "Product", FormMethod.Post))
+        @using (Html.BeginForm("Index", "Category", FormMethod.Post))
             {
             <div class="div-block"></div>
             <div class="col-md-8 col-md-offset-4 alert-info">
@@ -25,7 +25,8 @@
 
                 <input type="submit" value="Submit" class="submit-button w-button" />
             </div>
-
+            <br/><br /><br />
+            <div class=" text-block alert-info">@ViewBag.msg</div>
         }
         </div>
         </div>
