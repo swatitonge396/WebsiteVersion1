@@ -30,18 +30,19 @@ namespace Website.Controllers
                     ApplicationUser u = db.Users.Find(User.Identity.GetUserId());
                     ScrapList rec = new ScrapList()
                     {
-                       Product = p,
-                       User = u
+                        Product = p,
+                        User = u
                     };
 
                     db.ScrapList.Add(rec);
                     db.SaveChanges();
-                    return new HttpStatusCodeResult(HttpStatusCode.OK);
+
                 }
-                return new HttpStatusCodeResult(HttpStatusCode.OK);
+
             }
 
-            return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            return RedirectToAction("Index", "Product");
         }
+
     }
 }

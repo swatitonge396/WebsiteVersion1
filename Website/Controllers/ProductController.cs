@@ -41,25 +41,7 @@ namespace Website.Controllers
             return View(list);
         }
 
-        // GET: Products/Details/5
-        [HttpPost]
-        public ActionResult Index(int Category)
-        {
-            string CurrentUser = User.Identity.GetUserId();
-            var Rec = (from rec in db.ScrapList where rec.User.Id == CurrentUser select rec.Product.Id).ToList();
-            var Rec1 = (from rec in db.WishList where rec.User.Id == CurrentUser select rec.Product.Id).ToList();
-
-
-            var list = (from product in db.Products
-                        where (product.Category == Category) && (!Rec.Contains(product.Id)) && (!Rec1.Contains(product.Id))
-                        select product).ToList();
-            if (list == null)
-            {
-                return HttpNotFound();
-            }
-            return View(list);
-        }
-
+         
 
         protected override void Dispose(bool disposing)
         {
