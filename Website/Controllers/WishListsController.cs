@@ -24,28 +24,27 @@ namespace Website.Controllers
             if (list == null)
                 return View(list);
             var listWish = (from rec in db.Products where list.Contains(rec.Id) select rec).ToList();
-                 
+
             return View(listWish);
         }
-         
-        // GET: WishLists/Create
+
+
         [HttpPost]
-        //[ValidateAntiForgeryToken]
-         
-        public ActionResult Create1(int id)
+        // [ValidateAntiForgeryToken]
+        public ActionResult Create(int Id)
         {
             if (ModelState.IsValid)
             {
-                WishList w = db.WishList.FirstOrDefault(rec => rec.Product.Id == id);
+                WishList w = db.WishList.FirstOrDefault(rec => rec.Product.Id == Id);
                 if (w == null)
                 {
-                    Product p = db.Products.Find(id);
+                    Product p = db.Products.Find(Id);
                     if (p == null)
                     {
                         Console.WriteLine("no product in Db");
                         //need to call api
                     }
-                    
+
                     ApplicationUser u = db.Users.Find(User.Identity.GetUserId());
                     Console.WriteLine("user id" + u.Email);
 
@@ -53,37 +52,28 @@ namespace Website.Controllers
                     {
                         ASIN = p.ASIN,
 
-                        Product = p
-                        /*
-                        new Product()
-                        {
-                            Id = p.Id,
-                            /*ASIN = p.ASIN,
-                            Category = p.Category,
-                            DetailPageURL = p.DetailPageURL,
-                            Brand = p.Brand,
-                            LargeImage = p.LargeImage,
-                            OtherInfo = p.OtherInfo
-                        } */,
+                        Product = p,
+
                         User = u
                     };
 
                     db.WishList.Add(wish);
                     db.SaveChanges();
-                    return new HttpStatusCodeResult(HttpStatusCode.OK);
+
                 }
-                return new HttpStatusCodeResult(HttpStatusCode.OK);
+
             }
-      
-            return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+
+            return RedirectToAction("Index", "Product");
         }
-         
+
+
         // POST: WishLists/Delete/5
         [HttpPost]
         //[ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
-            WishList wishList = db.WishList.FirstOrDefault(rec=>rec.Product.Id==id);
+            WishList wishList = db.WishList.FirstOrDefault(rec => rec.Product.Id == id);
             wishList.Product = null;
             wishList.User = null;
             db.WishList.Remove(wishList);
