@@ -1,10 +1,13 @@
-﻿@Model Website.Models.Product
+﻿ 
 
 @{
     ViewBag.Title = "Product";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@if (Model == null)
+{ <h2> No Products Available!! </h2>}
+else
+{ 
 <div class="div-block"></div>
 
 <div class="add_remove">
