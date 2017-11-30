@@ -66,7 +66,8 @@ namespace Website.DBService
                             p.Title = item.Descendants(ns + "Title")?.FirstOrDefault()?.Value;
                             //put switch for category
                             if(rec.Id==1)
-                                p.OtherInfo = "Author : " + item.Descendants(ns + "Author")?.FirstOrDefault()?.Value; ;
+                                p.OtherInfo = "Author : " + item.Descendants(ns + "Author")?.FirstOrDefault()?.Value;
+                            p.Brand = item.Descendants(ns + "Brand")?.FirstOrDefault()?.Value;
                             // dt.Rows.Add(p.DetailPageURL, p.ASIN, p.LargeImage, p.Title, p.Brand, p.Category, p.OfferListingId, p.OtherInfo);
                             context.Products.Add(p);
                         }
