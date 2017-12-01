@@ -80,7 +80,7 @@ namespace Website.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        // Action method to email
         protected override void Dispose(bool disposing)
         {
             if (disposing)
