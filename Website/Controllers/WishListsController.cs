@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Website.Models;
+using Website.Utils;
 
 namespace Website.Controllers
 {
@@ -80,7 +81,23 @@ namespace Website.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        // Action method to email
 
+        public ActionResult sendEmail(String ToEmail)
+        {
+            var Id = User.Identity.GetUserId();
+            var list = (from rec in db.WishList where rec.User.Id == Id select rec.Product.Id).ToList();
+
+            if (list == null)
+                return View(list);
+            List<Product> products = (from rec in db.Products where list.Contains(rec.Id) select rec).ToList();
+
+            EmailClient ec = new EmailClient();
+
+            ec.sendEmail(ToEmail, products);
+            return View("EmailConformation");
+
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

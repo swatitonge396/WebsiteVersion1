@@ -74,27 +74,30 @@ namespace Website.DBService
                     }
                 }//end of category
 
-            //connection string
-           // string connectionString= ConfigurationManager.ConnectionStrings["MyConnection1"].ConnectionString;
-           /* SqlConnection cn = new SqlConnection(connectionString);
-            cn.Open();
-                using (SqlBulkCopy bulkCopy = new SqlBulkCopy(cn))
-                {
-                    bulkCopy.DestinationTableName =
-                     "dbo.Products";
+                //connection string
+                // string connectionString= ConfigurationManager.ConnectionStrings["MyConnection1"].ConnectionString;
+                /* SqlConnection cn = new SqlConnection(connectionString);
+                 cn.Open();
+                     using (SqlBulkCopy bulkCopy = new SqlBulkCopy(cn))
+                     {
+                         bulkCopy.DestinationTableName =
+                          "dbo.Products";
 
-                    try
-                    {
-                        // Write from the source to the destination.
-                        bulkCopy.WriteToServer(dt);
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.Message);
-                    }
-                }
-                cn.Close();*/
-            }            
+                         try
+                         {
+                             // Write from the source to the destination.
+                             bulkCopy.WriteToServer(dt);
+                         }
+                         catch (Exception ex)
+                         {
+                             Console.WriteLine(ex.Message);
+                         }
+                     }
+                     cn.Close();*/
+
+                // SleepTimer 10 seconds for Amazon Request
+                System.Threading.Thread.Sleep(10000);
+            }
         }
     }
 }

@@ -1,0 +1,23 @@
+﻿
+
+<html>
+<body>
+    <h2>WishList</h2>
+    <br />
+
+
+    @foreach (var item in Model)
+    {
+
+
+        <div class="div-block"></div>
+        <div class="favorite-item">
+            <img src="@item.LargeImage" width="100" class="favorite_item_image">
+            <div class="favorite_product_name">@item.Title</div><a href="@item.DetailPageURL" class="shop_favorite w-button">SHOP</a>
+        </div>
+
+
+
+    }
+</body>
+</html>
