@@ -7,20 +7,6 @@
 @if (Model.Count == 0)
 {<p> No Favourites!!!</p>}
 
-<div class="div-block"></div>
-<div class="sendmail-item">
-    Email To:
-    <input type="text" id="ToEmail" />
-
-    @Html.ActionLink("Send Email", "sendEmail", "WishLists", null, htmlAttributes: new { @class = "sendmail_favorite w-button", onclick = "SubmitToEmail(this)" })
-</div>
-
-<script>
-    function SubmitToEmail(obj) {
-        obj.href = obj.href + '?ToEmail=' + document.getElementById("ToEmail").value;
-    }
-</script>
-
 <table class="table table-responsive">
 
     <tbody>

@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNet.Identity;
-using SampleAuth1.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -89,25 +88,6 @@ namespace Website.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-        // To Send Wishlist as email 
-        [HttpGet]
-        public ActionResult sendEmail(String ToEmail)
-        {
-            
-            var Id = User.Identity.GetUserId();
-            String From = User.Identity.GetUserName();
-            var list = (from rec in db.WishList where rec.User.Id == Id select rec.Product.Id).ToList();
-
-            if (list == null)
-                return View(list);
-            List<Product> products = (from rec in db.Products where list.Contains(rec.Id) select rec).ToList();
-
-            EmailClient ec = new EmailClient();
-            ec.sendEmail(ToEmail, products, From);
-            return View("EmailConfirmation");
-
         }
     }
 }
