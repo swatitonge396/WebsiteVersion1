@@ -19,14 +19,14 @@ namespace Website.Controllers
         {
             if (ModelState.IsValid)
             {
-                WishList w = db.WishList.FirstOrDefault(rec => rec.Product.Id == Id);
-                if (w == null)
-                {
+                //WishList w = db.WishList.FirstOrDefault(rec => rec.Product.Id == Id);
+                //if (w == null)
+                //{
                     Product p = db.Products.Find(Id);
-                    if (p == null)
-                    {
-                        Console.WriteLine("no product");
-                    }
+                  //  if (p == null)
+                   // {
+                    //    Console.WriteLine("no product");
+                    //}
                     ApplicationUser u = db.Users.Find(User.Identity.GetUserId());
                     ScrapList rec = new ScrapList()
                     {
@@ -39,7 +39,7 @@ namespace Website.Controllers
 
                 }
 
-            }
+            //}
 
             return RedirectToAction("Index", "Product");
         }
