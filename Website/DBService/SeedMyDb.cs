@@ -35,7 +35,7 @@ namespace Website.DBService
             {
                 dt.Clear();
                 url.BrowseNode = rec.Code;
-                uint bs = Convert.ToUInt32(url.BrowseNode);
+                 
                 for (int i = 1; i< 11; i++)
                 {
                     string XmlResponse;
