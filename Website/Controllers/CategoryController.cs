@@ -26,8 +26,7 @@ namespace Website.Controllers
             ApplicationUser user = manager.FindById(CurrentUser);
             user.Category = Category;
             manager.UpdateAsync(user);
-            //ViewBag.msg = "New Category Selected " + db.Category.Find(Category)?.Name;
-            return RedirectToAction("Index", "Product");
+                       return RedirectToAction("Index", "Product");
         }
     }
 }
