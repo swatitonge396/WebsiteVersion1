@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Share";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="div-block"></div>
+<div class="section-2  w-clearfix">
+    <h3 class="heading">Share Maybe List</h3>
+</div>
+<div class="form-block w-form">
+    
+        <label for="Email-To" class="field-label-2">Send to:</label><textarea id="Email-To" name="Email-To" placeholder="Enter the recipient&#x27;s email address (separate multiple email addresses with a comma)" maxlength="5000" data-name="Email To" required="" class="textarea w-input"></textarea>
+        <div class="div-block-4">
+            @Html.ActionLink("Send Now", "sendEmail", "Wishlists", null, htmlAttributes: new { @class = "submit-button w-button", onclick = "SubmitToEmail(this)" })
+            <a href="@Url.Action("Index", "Wishlists")" class="link-2">Go Back</a></div>
+
+            <script>
+                function SubmitToEmail(obj) {
+                    obj.href = obj.href + '?ToEmailList=' + document.getElementById("Email-To").value;
+                }
+            </script>
+
+    <div class="success-message w-form-done">
+        <div class="text-block">WELCOME!</div>
+    </div>
+    <div class="error-message w-form-fail">
+        <div>Oops! Something went wrong. Please try again.</div>
+    </div>
+</div>

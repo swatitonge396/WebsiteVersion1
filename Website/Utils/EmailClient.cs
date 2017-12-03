@@ -12,10 +12,10 @@ namespace Website.Utils
 {
     public class EmailClient
     {
-        public void sendEmail(string ToEmail, List<Product> products)
+        public void sendEmail(string ToEmail, List<Product> products, String From)
         {
-            var fromAddress = new MailAddress("projectamazon17@gmail.com", "From Name");
-            var toAddress = new MailAddress(ToEmail, "To Name");
+            var fromAddress = new MailAddress("projectamazon17@gmail.com", From);
+            var toAddress = new MailAddress(ToEmail, ToEmail);
             string fromPassword = "YW1hem9uMTIz";
             string subject = " Email from BuyMayBE";
             string body = createHTMLBody(products);

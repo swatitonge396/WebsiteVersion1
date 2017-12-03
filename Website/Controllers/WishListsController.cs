@@ -81,10 +81,15 @@ namespace Website.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        // Action method to email
 
-        public ActionResult sendEmail(String ToEmail)
+
+        // Action method to email
+        public ActionResult sendEmail(String ToEmailList)
         {
+            if (ToEmailList==null)
+            {
+                return View("SendEmail");
+            }
             var Id = User.Identity.GetUserId();
             var list = (from rec in db.WishList where rec.User.Id == Id select rec.Product.Id).ToList();
 
@@ -93,8 +98,22 @@ namespace Website.Controllers
             List<Product> products = (from rec in db.Products where list.Contains(rec.Id) select rec).ToList();
 
             EmailClient ec = new EmailClient();
+            
+            if(ToEmailList.Contains(","))
+            {
+                String[] EmailList = ToEmailList.Split(',');
+                foreach(String ToEmail in EmailList)
+                {
+                    ec.sendEmail(ToEmail, products, User.Identity.GetUserName());
+                }
+                
+            }
+            else
+            {
+                ec.sendEmail(ToEmailList, products, User.Identity.GetUserName());
+            }
 
-            ec.sendEmail(ToEmail, products);
+            
             return View("EmailConformation");
 
         }
