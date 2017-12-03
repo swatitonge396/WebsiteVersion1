@@ -30,13 +30,18 @@
             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "text-field-5 w-input", @maxlength = "256", @name = "Verify-Password", @placeholder = "Re-enter your password", @required = "" })
 
             @Html.Label("Select Category", new { @class = "field-label-6" })
-            
-            <span>@Html.RadioButtonFor(m => m.Category, 1,new{@checked="checked" }) Books</span> <br/>
-            <span>@Html.RadioButtonFor(m => m.Category, 2) Appliances </span><br />
-            <span>@Html.RadioButtonFor(m => m.Category, 3) Arts, Crafts & Sewing</span><br />
+
+            <span>@Html.RadioButtonFor(m => m.Category, 1, new { @checked = "checked" }) Appliances </span><br />
+            <span>@Html.RadioButtonFor(m => m.Category, 2) Arts, Crafts & Sewing</span><br />
+            <span>@Html.RadioButtonFor(m => m.Category, 3) Automotive</span><br />
             <span>@Html.RadioButtonFor(m => m.Category, 4) Baby</span><br />
-            <span>@Html.RadioButtonFor(m => m.Category, 5) Automotive</span><br />
-            <span>@Html.RadioButtonFor(m => m.Category, 6) Beauty</span>
+            <span>@Html.RadioButtonFor(m => m.Category, 5) Beauty</span><br />
+            <span>@Html.RadioButtonFor(m => m.Category, 6) Books</span> <br />
+            <span>@Html.RadioButtonFor(m => m.Category, 7) Clothing, Shoes & Jewelry</span> <br />
+            <span>@Html.RadioButtonFor(m => m.Category, 8) Electronics </span> <br />
+            <span>@Html.RadioButtonFor(m => m.Category, 9) Health & Personal Care </span> <br />
+            <span>@Html.RadioButtonFor(m => m.Category, 10) Toys & Games </span> <br />
+
 
             <input type="submit" value="Sign Up" class="submit-button w-button" />
 
