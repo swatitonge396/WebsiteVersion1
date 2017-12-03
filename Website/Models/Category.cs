@@ -7,6 +7,7 @@ namespace Website.Models
 {
     public class Category
     {
+        [Required, Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
         public string Name { get; set; }
         public string Code { get; set; }
