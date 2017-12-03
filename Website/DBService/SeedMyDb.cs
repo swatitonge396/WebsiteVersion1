@@ -95,7 +95,7 @@ namespace Website.DBService
                      }
                      cn.Close();*/
 
-                // SleepTimer 10 seconds for Amazon Request
+                // SleepTimer 10 seconds for Amazon Request to avoid error
                 System.Threading.Thread.Sleep(10000);
             }
         }
