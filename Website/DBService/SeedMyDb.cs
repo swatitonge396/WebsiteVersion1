@@ -75,7 +75,7 @@ namespace Website.DBService
                                 context.Products.Add(p);
                             }
                         }//for
-                        System.Threading.Thread.Sleep(1000);
+                        //System.Threading.Thread.Sleep(1000);
 
                     }
 
