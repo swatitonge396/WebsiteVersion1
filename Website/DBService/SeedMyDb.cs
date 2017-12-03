@@ -12,8 +12,8 @@ namespace Website.DBService
 {
     class SeedMyDb
     {
-        public  void FillDB(Website.Models.MyDbContext context)
-        { 
+        public void FillDB(Website.Models.MyDbContext context)
+        {
 
             //define column of data table
             DataTable dt = new DataTable();
@@ -25,18 +25,18 @@ namespace Website.DBService
             dt.Columns.Add(new DataColumn("Category", typeof(int)));
             dt.Columns.Add(new DataColumn("OfferListingId", typeof(string)));
             dt.Columns.Add(new DataColumn("OtherInfo", typeof(string)));
-           
-            
+
+
 
             //setup browseNode and ItemPage
             GenerateURL url = new GenerateURL();
             var categoryRec = (from rec in context.Category select rec).ToList();
-            foreach(var rec in categoryRec)
+            foreach (var rec in categoryRec)
             {
                 dt.Clear();
                 url.BrowseNode = rec.Code;
-                 
-                for (int i = 1; i< 11; i++)
+
+                for (int i = 1; i < 11; i++)
                 {
                     string XmlResponse;
                     XmlResponse = string.Empty;
@@ -57,47 +57,55 @@ namespace Website.DBService
 
                         foreach (var item in Items)
                         {
-                            Product p = new Product();
-                            p.ASIN = item.Element(ns + "ASIN").Value;
-                            p.DetailPageURL = item.Element(ns + "DetailPageURL").Value;
-                            p.LargeImage = item.Element(ns + "LargeImage")?.Element(ns + "URL")?.Value;
-                            p.Category = rec.Id;
-                            p.OfferListingId = item.Descendants(ns + "OfferListingId")?.FirstOrDefault()?.Value;
-                            p.Title = item.Descendants(ns + "Title")?.FirstOrDefault()?.Value;
-                            //put switch for category
-                            if(rec.Id==1)
-                                p.OtherInfo = "Author : " + item.Descendants(ns + "Author")?.FirstOrDefault()?.Value;
-                            p.Brand = item.Descendants(ns + "Brand")?.FirstOrDefault()?.Value;
-                            // dt.Rows.Add(p.DetailPageURL, p.ASIN, p.LargeImage, p.Title, p.Brand, p.Category, p.OfferListingId, p.OtherInfo);
-                            context.Products.Add(p);
-                        }
+                            var image = item.Element(ns + "LargeImage")?.Element(ns + "URL")?.Value;
+                            if (image != null)
+                            {
+                                Product p = new Product();
+                                p.ASIN = item.Element(ns + "ASIN").Value;
+                                p.DetailPageURL = item.Element(ns + "DetailPageURL").Value;
+                                p.LargeImage = image;
+                                p.Category = rec.Id;
+                                p.OfferListingId = item.Descendants(ns + "OfferListingId")?.FirstOrDefault()?.Value;
+                                p.Title = item.Descendants(ns + "Title")?.FirstOrDefault()?.Value;
+                                p.Brand = item.Descendants(ns + "Brand")?.FirstOrDefault()?.Value;
+                                //put switch for category
+                                if (rec.Id == 6)
+                                    p.OtherInfo = "Author : " + item.Descendants(ns + "Author")?.FirstOrDefault()?.Value; ;
+                                // dt.Rows.Add(p.DetailPageURL, p.ASIN, p.LargeImage, p.Title, p.Brand, p.Category, p.OfferListingId, p.OtherInfo);
+                                context.Products.Add(p);
+                            }
+                        }//for
+                        System.Threading.Thread.Sleep(1000);
+
                     }
-                }//end of category
 
-                //connection string
-                // string connectionString= ConfigurationManager.ConnectionStrings["MyConnection1"].ConnectionString;
-                /* SqlConnection cn = new SqlConnection(connectionString);
-                 cn.Open();
-                     using (SqlBulkCopy bulkCopy = new SqlBulkCopy(cn))
-                     {
-                         bulkCopy.DestinationTableName =
-                          "dbo.Products";
-
-                         try
+                    //connection string
+                    // string connectionString= ConfigurationManager.ConnectionStrings["MyConnection1"].ConnectionString;
+                    /* SqlConnection cn = new SqlConnection(connectionString);
+                     cn.Open();
+                         using (SqlBulkCopy bulkCopy = new SqlBulkCopy(cn))
                          {
-                             // Write from the source to the destination.
-                             bulkCopy.WriteToServer(dt);
-                         }
-                         catch (Exception ex)
-                         {
-                             Console.WriteLine(ex.Message);
-                         }
-                     }
-                     cn.Close();*/
+                             bulkCopy.DestinationTableName =
+                              "dbo.Products";
 
-                // SleepTimer 10 seconds for Amazon Request to avoid error
-                System.Threading.Thread.Sleep(10000);
-            }
+                             try
+                             {
+                                 // Write from the source to the destination.
+                                 bulkCopy.WriteToServer(dt);
+                             }
+                             catch (Exception ex)
+                             {
+                                 Console.WriteLine(ex.Message);
+                             }
+                         }
+                         cn.Close();*/
+
+                    // SleepTimer 10 seconds for Amazon Request to avoid error
+                    // System.Threading.Thread.Sleep(10000);
+
+                } //end of page
+
+            }//end of category
         }
     }
 }
