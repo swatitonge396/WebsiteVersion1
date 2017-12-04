@@ -13,7 +13,6 @@ namespace Website.Controllers
     {
         private MyDbContext db = new MyDbContext();
                 
-        [HttpPost]
         //[ValidateAntiForgeryToken]
         public ActionResult Create(int Id)
         {

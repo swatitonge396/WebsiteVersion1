@@ -30,7 +30,7 @@ namespace Website.Controllers
         }
          
         
-        [HttpPost]
+
         // [ValidateAntiForgeryToken]
         public ActionResult Create(int Id)
         {
@@ -69,8 +69,7 @@ namespace Website.Controllers
         }
 
 
-        // POST: WishLists/Delete/5
-        [HttpPost]
+
         //[ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {

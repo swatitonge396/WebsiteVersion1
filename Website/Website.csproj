@@ -227,6 +227,7 @@
     <Compile Include="Models\MyDbContext.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ScrapList.cs" />
+    <Compile Include="Models\UserSettingsController.cs" />
     <Compile Include="Models\WishList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -347,6 +348,9 @@
     <Content Include="Views\WishLists\EmailConformation.cshtml" />
     <Content Include="Views\WishLists\WishListEmailTemplate.cshtml" />
     <Content Include="Views\WishLists\SendEmail.cshtml" />
+    <Content Include="Views\UserSettings\Index.cshtml" />
+    <Content Include="Views\Manage\Index - Copy.cshtml" />
+    <Content Include="Views\Manage\ChangePassword - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

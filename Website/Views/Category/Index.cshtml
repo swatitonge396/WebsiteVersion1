@@ -1,39 +1,32 @@
 ﻿
-
 @{
     ViewBag.Title = "Category";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-<br />
-<div class="container container-table">
-    <div class="row vertical-center-row">
-        <h2> Choose Category</h2>
         @using (Html.BeginForm("Index", "Category", FormMethod.Post))
             {
             <div class="div-block"></div>
-            <div class="col-md-8 col-md-offset-4 alert-info">
-                <span>@Html.RadioButton("Category", 1, new { @checked = "checked" })  Appliances </span><br />
-                <span>@Html.RadioButton("Category", 2)  Arts, Crafts & Sewing</span><br />
-                <span>@Html.RadioButton("Category", 3)  Automotive</span><br />
-                <span>@Html.RadioButton("Category", 4)  Baby</span><br />
-                <span>@Html.RadioButton("Category", 5)  Beauty</span><br />
-                <span>@Html.RadioButton("Category", 6)  Books</span> <br />
-                <span>@Html.RadioButton("Category", 7)  Clothing, Shoes & Jewelry</span> <br />
-                <span>@Html.RadioButton("Category", 8)  Electronics </span> <br />
-                <span>@Html.RadioButton("Category", 9)  Health & Personal Care </span> <br />
-                <span>@Html.RadioButton("Category", 10) Toys & Games </span> <br /><br /><br />
+            <div class="form-block w-form">
+                <h2> Choose Category</h2>
+                @foreach (var cat in Model)
+                {
+                    int i = cat.Id;
+                    if (cat.Selected == true)
+                    {
+                        <span>@Html.RadioButton("Category", i, new { @checked = "checked" }) @cat.Name</span><br />
+                    }
+                    else
+                    {
+                        <span>@Html.RadioButton("Category", i) @cat.Name</span><br />
+                    }
 
-                // exatra category added
-
+                }
                 <input type="submit" value="Submit" class="submit-button w-button" />
             </div>
             <br /><br /><br />
              
         }
-    </div>
-</div>
 
 
 

@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="div-block"></div>
+
+<div class="form-block w-form">
+    <form id="wf-form-Email-Form" name="wf-form-Email-Form" data-name="Email Form" class="form">
+        <h3>Password</h3>
+        
+
+
+        <label for="Current-Password" class="field-label-2">Current Password:</label>
+        <input type="password" class="form-field---email w-input" maxlength="256" name="Current-Password" data-name="Current Password" placeholder="Enter your current password" id="Current-Password">
+        
+        <label for="New-Password" class="field-label-3">New Password:</label>
+        <input type="password" class="form-field---email w-input" maxlength="256" name="New-Password" data-name="New Password" placeholder="Enter a new password" id="New-Password">
+        
+        <label for="Repeat-Password" class="field-label-3">Repeat New Password:</label>
+        <input type="password" class="form-field---password-1 w-input" maxlength="256" name="Repeat-Password" data-name="Repeat Password" placeholder="Enter your new password again" id="Repeat-Password">
+        
+        <input type="submit" value="Save" data-wait="Saving..." class="submit-button w-button">
+    </form>
+    <div class="success-message w-form-done">
+        <div class="text-block">WELCOME!</div>
+    </div>
+    <div class="error-message w-form-fail">
+        <div>Oops! Something went wrong. Please try again.</div>
+    </div>
+</div>
+

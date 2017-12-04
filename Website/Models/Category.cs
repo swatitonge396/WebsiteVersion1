@@ -13,5 +13,14 @@ namespace Website.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Code { get; set; }
+
+        [NotMapped]
+        public Boolean Selected { get; set; }
+
+        public Category()
+        {
+            this.Selected = false;
+        }
+
     }
 }
