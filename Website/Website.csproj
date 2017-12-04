@@ -219,10 +219,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712031414356_Init.cs" />
-    <Compile Include="Migrations\201712031414356_Init.Designer.cs">
-      <DependentUpon>201712031414356_Init.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
@@ -371,11 +367,6 @@
       <Project>{6684b633-3696-411c-9764-141191ccba17}</Project>
       <Name>URLGenerationService</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712031414356_Init.resx">
-      <DependentUpon>201712031414356_Init.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

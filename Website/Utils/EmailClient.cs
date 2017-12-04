@@ -12,33 +12,45 @@ namespace Website.Utils
 {
     public class EmailClient
     {
-        public void sendEmail(string ToEmail, List<Product> products, String From)
+        public Boolean sendEmail(string ToEmail, List<Product> products, String From)
         {
-            var fromAddress = new MailAddress("projectamazon17@gmail.com", From);
-            var toAddress = new MailAddress(ToEmail, ToEmail);
-            string fromPassword = "YW1hem9uMTIz";
-            string subject = " Email from BuyMayBE";
-            string body = createHTMLBody(products);
-            byte[] decrypt = Convert.FromBase64String(fromPassword);
+            try
+            {
+                var fromAddress = new MailAddress("projectamazon17@gmail.com", From);
+                var toAddress = new MailAddress(ToEmail, ToEmail);
+                string fromPassword = "YW1hem9uMTIz";
+                string subject = " Email from BuyMayBE";
+                string body = createHTMLBody(products);
+                byte[] decrypt = Convert.FromBase64String(fromPassword);
 
-            var smtp = new SmtpClient
-            {
-                Host = "smtp.gmail.com",
-                Port = 587,
-                EnableSsl = true,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(fromAddress.Address, System.Text.Encoding.UTF8.GetString(decrypt))
-            };
-            using (var message = new MailMessage(fromAddress, toAddress)
-            {
-                Subject = subject,
-                IsBodyHtml = true,
-                Body = body
-            })
-            {
-                smtp.Send(message);
+                var smtp = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential(fromAddress.Address, System.Text.Encoding.UTF8.GetString(decrypt))
+                };
+                using (var message = new MailMessage(fromAddress, toAddress)
+                {
+                    Subject = subject,
+                    IsBodyHtml = true,
+                    Body = body
+                })
+                {
+                    smtp.Send(message);
+
+                }
+
+                return true;
             }
+            catch (Exception e)
+            {
+                return false;
+            }
+            
+           
         }
 
         public String createHTMLBody(List<Product> products)
