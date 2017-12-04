@@ -31,11 +31,16 @@
     </div>
 </div>
 <div class="div-block-2 w-clearfix">
-    <div class="text-block-3">Need an account?</div>
-    @Html.ActionLink("Sign Up Now!", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "link" })
+    <div class="text-block-3">Need an account? @Html.ActionLink("Sign Up Now!", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "link _1" })</div>
+    
 
 </div>
- 
+ <!--
+<div>
+    @*@Html.ActionLink("Forgot Password", "ForgotPassword", "Account", routeValues: null, htmlAttributes: new { @class = "link-block w-inline-block" })*@
+
+</div>
+     -->
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

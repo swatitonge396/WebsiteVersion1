@@ -16,7 +16,7 @@
 @foreach (var item in Model)
 {
     <div class="favorite-item">
-        @Html.ActionLink("REMOVE",  "WishLists", new { id = item.Id }, htmlAttributes: new { @class = "remove_favorite w-button" })
+        @Html.ActionLink("REMOVE", "Delete", "WishLists", new { id = item.Id }, htmlAttributes: new { @class = "remove_favorite w-button" })
         <img src="@item.LargeImage" width="100" class="favorite_item_image">
         <div class="favorite_product_name">@item.Title</div><a href="@item.DetailPageURL" class="shop_favorite w-button">SHOP</a>
     </div>

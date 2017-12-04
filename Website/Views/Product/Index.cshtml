@@ -8,37 +8,21 @@
 { <h2> No Products Available!! </h2>}
 else
 { 
-<div class="div-block"></div>
-
-<div class="add_remove">
-    @using (Html.BeginForm("Create", "ScrapList", new { Id = Model.Id }, FormMethod.Post))
-    {<input type="submit" value="x" class="button_remove w-button" />
-    }
-    @using (Html.BeginForm("Create", "WishLists", new { Id = Model.Id }, FormMethod.Post))
-    {<input type="submit" value="+" class="button_add w-button" />
-    }
 
 
-</div>
-<div class="product-view w-container">
-    <a href="@Model.DetailPageURL" target="_blank"><img src="@Model.LargeImage" width="600" height="600" sizes="(max-width: 479px) 90vw, (max-width: 767px) 80vw, (max-width: 991px) 582.390625px, 600px" class="product-image"></a>
+    <div class="div-block"></div>
+    <div class="add_remove">
+        @Html.ActionLink("x", "Create", "ScrapList", new { id = Model.Id }, htmlAttributes: new { @class = "button_remove w-button" })
+        @Html.ActionLink("+", "Create", "WishLists", new { id = Model.Id }, htmlAttributes: new { @class = "button_add w-button" })
 
-</div>
-<!--<div class="section">
-    <div class="product-name">@Model.Title</div>
-</div>
-<div class="product-description">@Model.OtherInfo</div> -->
- }
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript"></script>
-    <script src="~/buymaybe/js/buymaybe.js" type="text/javascript"></script>
-    <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </div>
+    <div class="product-view w-container">
+        <img src="@Model.LargeImage" width="600" height="600" srcset="@Model.LargeImage 500w, @Model.LargeImage 600w" sizes="(max-width: 479px) 90vw, (max-width: 767px) 80vw, (max-width: 991px) 582.390625px, 600px" class="product-image">
+    </div>
+    <div class="section">
+        <div class="product-name"></div>
+    </div>
+    <div class="product-description"></div>
 
 }
 
