@@ -98,25 +98,34 @@ namespace Website.Controllers
             List<Product> products = (from rec in db.Products where list.Contains(rec.Id) select rec).ToList();
 
             EmailClient ec = new EmailClient();
-            
-            if(ToEmailList.Contains(","))
+            Boolean MSGSentStatus = true;
+            if (ToEmailList.Contains(","))
             {
                 String[] EmailList = ToEmailList.Split(',');
                 foreach(String ToEmail in EmailList)
                 {
-                    ec.sendEmail(ToEmail, products, User.Identity.GetUserName());
+                    MSGSentStatus = MSGSentStatus && ec.sendEmail(ToEmail, products, User.Identity.GetUserName());
                 }
-                
             }
             else
             {
-                ec.sendEmail(ToEmailList, products, User.Identity.GetUserName());
+                MSGSentStatus = ec.sendEmail(ToEmailList, products, User.Identity.GetUserName());
             }
+            if (MSGSentStatus)
+            {
+                return Json(new { Success = "true", Message = "Success" }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new { Success = "false", Message = "Failure" },JsonRequestBehavior.AllowGet);
+            }
+            
 
             
-            return View("EmailConformation");
 
         }
+
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -2,7 +2,9 @@
 @{
     ViewBag.Title = "Share";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
+
 
 <div class="div-block"></div>
 <div class="section-2  w-clearfix">
@@ -12,19 +14,105 @@
     
         <label for="Email-To" class="field-label-2">Send to:</label><textarea id="Email-To" name="Email-To" placeholder="Enter the recipient&#x27;s email address (separate multiple email addresses with a comma)" maxlength="5000" data-name="Email To" required="" class="textarea w-input"></textarea>
         <div class="div-block-4">
-            @Html.ActionLink("Send Now", "sendEmail", "Wishlists", null, htmlAttributes: new { @class = "submit-button w-button", onclick = "SubmitToEmail(this)" })
+            <a href="#" id="sendmail" class="submit-button w-button">Send Now</a>
             <a href="@Url.Action("Index", "Wishlists")" class="link-2">Go Back</a></div>
 
-            <script>
-                function SubmitToEmail(obj) {
-                    obj.href = obj.href + '?ToEmailList=' + document.getElementById("Email-To").value;
-                }
-            </script>
+  
 
-    <div class="success-message w-form-done">
-        <div class="text-block">WELCOME!</div>
+
+
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modalmsg"></p>
+        </div>
+
     </div>
-    <div class="error-message w-form-fail">
-        <div>Oops! Something went wrong. Please try again.</div>
-    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        // Get the modal
+        var modal = document.getElementById('myModal');
+
+        $("#sendmail").click(function () {
+                var url = '/Wishlists/sendEmail?ToEmailList=' + document.getElementById("Email-To").value
+                $.get(url, function (data, status) {
+                    if (data.Success == 'true') {
+                        document.getElementById('modalmsg').innerText = 'Maybe List Emailed successfully!!!';
+                        modal.style.display = "block";
+                    } else {
+                        document.getElementById('modalmsg').innerText = 'Oops! Something went wrong. Please try again.';
+                        modal.style.display = "block";
+                    }
+                });
+        });
+
+        $(".close").click(function () {
+            modal.style.display = "none";
+        });
+        
+
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+
+
+    <style>
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 200px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%;
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+
+    </style>
+
+
+
+
 </div>
+
