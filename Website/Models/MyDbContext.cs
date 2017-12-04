@@ -12,7 +12,7 @@ namespace Website.Models
     public class MyDbContext: IdentityDbContext<ApplicationUser>
 
     {
-        public MyDbContext() :base("MyConnection", throwIfV1Schema: false)
+        public MyDbContext() :base("MyConnection1", throwIfV1Schema: false)
         {
             Configuration.ProxyCreationEnabled = false;
             Configuration.LazyLoadingEnabled = false;
