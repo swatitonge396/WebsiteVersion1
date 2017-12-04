@@ -19,7 +19,7 @@ namespace Website.Utils
                 var fromAddress = new MailAddress("projectamazon17@gmail.com", From);
                 var toAddress = new MailAddress(ToEmail, ToEmail);
                 string fromPassword = "YW1hem9uMTIz";
-                string subject = " Email from BuyMayBE";
+                string subject = " Email from BuyMaybe";
                 string body = createHTMLBody(products);
                 byte[] decrypt = Convert.FromBase64String(fromPassword);
 
@@ -62,7 +62,7 @@ namespace Website.Utils
             {
                 template = reader.ReadToEnd();
             }
-            // Install RazorEngine from Package Manager using "Install-Package RazorEngine"
+            // Installed RazorEngine from Package Manager using "Install-Package RazorEngine"
             String mailBody = Razor.Parse(template, products);
             return mailBody;
         }
