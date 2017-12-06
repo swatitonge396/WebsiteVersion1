@@ -9,7 +9,7 @@
             @Html.ActionLink("Products", "Index", "Product", routeValues: null, htmlAttributes: new { @class = "nav-link-4 w-nav-link" })
             @Html.ActionLink("Categories", "Index", "Category", routeValues: null, htmlAttributes: new { @class = "nav-link-5 w-nav-link" })
             @Html.ActionLink("Maybe List", "Index", "WishLists", routeValues: null, htmlAttributes: new { @class = "nav-link-6 w-nav-link" })
-            @Html.ActionLink("Settings", "ChangePassword", "Manage", routeValues: null, htmlAttributes: new { @class = "nav-link-6 w-nav-link" })
+            @Html.ActionLink("Manage Account", "ChangePassword", "Manage", routeValues: null, htmlAttributes: new { @class = "nav-link-6 w-nav-link" })
             <a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link-6 w-nav-link">Log off</a>
         </nav>
     }
@@ -17,7 +17,13 @@
 else
 {
     <nav role="navigation" class="nav-menu-2 w-nav-menu">
-        @Html.ActionLink("Sign Up", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "nav-link-6 signup w-nav-link" })
-        @*@Html.ActionLink("Sign In", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "nav-link-6 signup w-nav-link" })*@
-    </nav>
+        @if (Request.Path == "/")
+        {
+            @Html.ActionLink("Sign Up", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "nav-link-6 signup w-nav-link" })
+        }
+        else
+        {
+            @Html.ActionLink("Sign In", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "nav-link-6 signup w-nav-link" })
+        }
+     </nav>
 }
