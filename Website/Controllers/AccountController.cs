@@ -151,7 +151,7 @@ namespace Website.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email ,Category=model.Category,Name=model.Name};
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email ,Category=model.Category};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

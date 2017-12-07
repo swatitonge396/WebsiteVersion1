@@ -11,8 +11,7 @@ namespace Website.Models
     public class ApplicationUser : IdentityUser
     {
 
-        [Required]
-        public string Name { get; set; }
+         
 
         [Required]
         public int Category { get; set; } = 1000;

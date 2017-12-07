@@ -81,7 +81,7 @@ namespace Website.Models
         public string ConfirmPassword { get; set; }
 
         public int Category { get; set; }
-        public string Name { get; set; }
+        //public string Name { get; set; }
     }
 
     public class ResetPasswordViewModel

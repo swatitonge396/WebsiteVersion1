@@ -101,7 +101,7 @@ namespace Website.DBService
                          cn.Close();*/
 
                     // SleepTimer 10 seconds for Amazon Request to avoid error
-                     System.Threading.Thread.Sleep(10000);
+                     //System.Threading.Thread.Sleep(10000);
 
                 } //end of page
 
