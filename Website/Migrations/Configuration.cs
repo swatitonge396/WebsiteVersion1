@@ -20,7 +20,6 @@ namespace Website.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
-
             Category c1 = new Category() { Id = 1, Code = "2619526011", Name = "Appliances" };
             Category c2 = new Category() { Id = 2, Code = "2617942011", Name = "Arts, Crafts & Sewing" };
             Category c3 = new Category() { Id = 3, Code = "15690151", Name = "Automotive" };
